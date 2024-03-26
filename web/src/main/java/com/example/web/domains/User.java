@@ -1,7 +1,18 @@
 package com.example.web.domains;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="users") //수동으로 DB Table 지정, 원래는 클래스명으로 찾음
 public class User {
-  private Long index;
+
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) //index에 적용
+	private Long index;
+
   private String id;
   private String password;
 

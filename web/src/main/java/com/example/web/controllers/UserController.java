@@ -22,7 +22,7 @@ public class UserController {
     this.userService = userService;
   }
 
-  @GetMapping("/login")
+  @GetMapping("/")
   public String login (){
     return "users/login";
   }
@@ -40,7 +40,7 @@ public class UserController {
       
       userService.join(user);
 
-      return "redirect:/login";
+      return "redirect:/";
   }
 
   @GetMapping("/list")

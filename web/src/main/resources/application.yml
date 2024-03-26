@@ -8,7 +8,9 @@ spring:
     url: jdbc:postgresql://localhost:5432/spring
     username: starbox7
     password: starbox7
+    driver-class-name: org.postgresql.Driver
   jpa:
+    database: postgresql
     hibernate:
       ddl-auto: update
     properties:

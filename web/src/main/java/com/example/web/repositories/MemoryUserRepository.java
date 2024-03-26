@@ -7,11 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.springframework.stereotype.Repository;
-
 import com.example.web.domains.User;
 
-@Repository
+// @Repository
 public class MemoryUserRepository implements UserRepository {
     private static Map<Long, User> users = new HashMap<>();
     private static long index = 0L;

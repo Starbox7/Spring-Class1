@@ -1,13 +1,15 @@
 package  com.example.web.services;
 
 import java.util.List;
-
-import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 import com.example.web.domains.User;
 import com.example.web.repositories.UserRepository;
 
-@Service
+import jakarta.transaction.Transactional;
+
+// @Service
+@Transactional
 public class UserService {
   private final UserRepository userRepository;
 
@@ -29,5 +31,9 @@ public class UserService {
 
   public List<User> findUsers() {
     return userRepository.findAll();
+  }
+
+  public Optional<User> findOne(String id){
+    return userRepository.findById(id);
   }
 }
