@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>게시판</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{/bootstrap.min.css}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+      <a href="/question/list">back</a>
+      <form
+        th:action="@{/question/create}"
+        th:object="${questionDto}"
+        method="post"
+      >
+        <div
+          class="alert alert-danger"
+          role="alert"
+          th:if="${#fields.hasAnyErrors()}"
+        >
+          <div th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+        </div>
+        <div class="mb-3">
+          <label for="subject" class="form-label">제목</label>
+          <input
+            th:field="*{subject}"
+            type="text"
+            name="subject"
+            id="subject"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="content" class="form-label">내용</label>
+          <textarea
+            th:field="*{content}"
+            name="content"
+            id="content"
+            class="form-control"
+            rows="10"
+          ></textarea>
+        </div>
+        <input type="submit" value="저장하기" class="btn btn-primary my-2" />
+      </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script th:src="@{/bootstrap.min.js}"></script>
+  </body>
+</html>
